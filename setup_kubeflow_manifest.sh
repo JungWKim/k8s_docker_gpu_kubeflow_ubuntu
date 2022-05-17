@@ -8,7 +8,7 @@ wget https://github.com/kubernetes-sigs/kustomize/releases/download/v3.2.0/kusto
 
 #---------------- copy kustomize exe into /bin/bash
 chmod +x kustomize_3.2.0_linux_amd64
-mv kustomize_3.2.0_linux_amd64 /bin/bash
+mv kustomize_3.2.0_linux_amd64 /usr/bin
 
 #---------------- install kubeflow as a single command
 cd manifests
