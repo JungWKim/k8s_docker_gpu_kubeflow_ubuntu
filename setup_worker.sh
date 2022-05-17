@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#------------- Before executing this script, nvidia driver must be installed on all GPU worker nodes
+
 # check the must-be-done priorities
 echo "1. disable swap"
 echo "2. static IP"
@@ -40,6 +42,17 @@ cat > /etc/docker/daemon.json <<EOF
 EOF
 
 mkdir -p /etc/systemd/system/docker.service.d
+systemctl daemon-reload
+systemctl restart docker
+
+#-------------- install nvidia docker(nvidia container toolkit)
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
+   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+   
+apt-get update \
+   && sudo apt-get install -y nvidia-docker2
+   
 systemctl daemon-reload
 systemctl restart docker
 
