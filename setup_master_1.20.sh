@@ -78,7 +78,7 @@ echo "source <(kubeadm completion bash)" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 #------------- install CNI network addon
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 #------------- allow specific ports for k8s
 ufw allow 6443
