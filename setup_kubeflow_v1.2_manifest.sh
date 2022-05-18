@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #------------- install kfctl which is a CLI for deploy and manage kubeflow components
-wget https://github.com/kubeflow/kfctl/releases/download/v1.2-rc.4/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz
+wget https://github.com/kubeflow/kfctl/releases/download/v1.2.0/kfctl_v1.2.0-0-gbc038f9_linux.tar.gz
 
 tar xzvf kfctl_v1.2.0-0-gbc038f9_linux.tar.gz
 mv kfctl /usr/bin
