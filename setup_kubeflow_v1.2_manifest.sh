@@ -18,5 +18,5 @@ cd ${KF_DIR}
 kfctl build -V -f ${CONFIG_URI}
 
 #------------- execute packages using kfctl
-export CONFIG_FILE=${KF_DIR}/kfctl_k8s_istio.v1.0.0.yaml
+export CONFIG_FILE=${KF_DIR}/kfctl_k8s_istio.v1.2.0.yaml
 kfctl apply -V -f ${CONFIG_FILE}
