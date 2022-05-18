@@ -80,15 +80,6 @@ source $HOME/.bashrc
 #------------- install CNI network addon
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-#------------- install NVIDIA device plugin
-
-# add nvidia device plugin helm repository
-helm repo add nvdp https://nvidia.github.io/k8s-device-plugin \
-  && helm repo update
-
-# deploy nvidia device plugin
-helm install --generate-name nvdp/nvidia-device-plugin
-
 #------------- allow specific ports for k8s
 ufw allow 6443
 ufw allow 2379
