@@ -87,6 +87,6 @@ ufw allow 2380
 ufw allow 10250
 ufw allow 10251
 ufw allow 10252
-systemctl enable ufw
-systemctl start ufw
-ufw enable
+#systemctl enable ufw
+#systemctl start ufw
+#ufw enable
