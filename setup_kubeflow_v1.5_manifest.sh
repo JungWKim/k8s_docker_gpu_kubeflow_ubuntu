@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Turn off ufw or open a specific port for kubeflow installation
+
 #---------------- download kubeflow manifest repository
 git clone https://github.com/kubeflow/manifests.git
 
