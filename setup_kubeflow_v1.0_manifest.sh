@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Turn off ufw or open a specific port for kubeflow installation
+
 #------------- install kfctl which is a CLI for deploy and manage kubeflow components
 wget https://github.com/kubeflow/kfctl/releases/download/v1.0-rc.4/kfctl_v1.0-rc.3-1-g24b60e8_linux.tar.gz
 
