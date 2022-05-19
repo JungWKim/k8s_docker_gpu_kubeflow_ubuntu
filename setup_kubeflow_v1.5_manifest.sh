@@ -2,6 +2,23 @@
 
 # Turn off ufw or open a specific port for kubeflow installation
 
+#---------------- create default storage class
+echo "\
+> apiVersion: storage.k8s.io/v1
+> kind: StorageClass
+> metadata:
+>   name: standard
+> provisioner: kubernetes.io/aws-ebs
+> parameters:
+>   type: gp2
+> reclaimPolicy: Retain
+> allowVolumeExpansion: true
+> mountOptions:
+>   - debug
+> volumeBindingMode: Immediate" >> default-storageclass.yaml
+
+kubectl patch storageclass standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
 #---------------- download kubeflow manifest repository
 git clone https://github.com/kubeflow/manifests.git
 
