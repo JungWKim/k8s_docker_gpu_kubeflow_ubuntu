@@ -17,6 +17,8 @@ echo "\
 >   - debug
 > volumeBindingMode: Immediate" >> default-storageclass.yaml
 
+kubectl apply -f default-storageclass.yaml
+
 kubectl patch storageclass standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 #---------------- download kubeflow manifest repository
