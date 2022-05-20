@@ -7,7 +7,7 @@ echo "\
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: local-storage
+  name: nfs-storage
 provisioner: nfs-provisioner
 parameters:
   server: 192.168.0.203
@@ -16,7 +16,7 @@ parameters:
 
 kubectl apply -f default-storageclass.yaml
 
-kubectl patch storageclass local-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+kubectl patch storageclass nfs-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 #---------------- download kubeflow manifest repository
 git clone https://github.com/kubeflow/manifests.git
