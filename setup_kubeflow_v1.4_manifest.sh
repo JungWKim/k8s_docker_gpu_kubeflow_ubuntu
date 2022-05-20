@@ -12,9 +12,9 @@ provisioner: nfs-provisioner
 parameters:
   server: 192.168.0.203
   path: /data
-  readOnly: "false"" >> default-storageclass.yaml
+  readOnly: "false"" >> storageclass.yaml
 
-kubectl apply -f default-storageclass.yaml
+kubectl apply -f storageclass.yaml
 
 kubectl patch storageclass nfs-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
