@@ -7,19 +7,13 @@ echo "\
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: standard
-provisioner: kubernetes.io/aws-ebs
-parameters:
-  type: gp2
-reclaimPolicy: Retain
-allowVolumeExpansion: true
-mountOptions:
-  - debug
-volumeBindingMode: Immediate" >> default-storageclass.yaml
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer" >> default-storageclass.yaml
 
 kubectl apply -f default-storageclass.yaml
 
-kubectl patch storageclass standard -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+kubectl patch storageclass local-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 #---------------- download kubeflow manifest repository
 git clone https://github.com/kubeflow/manifests.git
@@ -29,8 +23,8 @@ wget https://github.com/kubernetes-sigs/kustomize/releases/download/v3.2.0/kusto
 
 #---------------- copy kustomize exe into /bin/bash
 chmod +x kustomize_3.2.0_linux_amd64
-mv kustomize_3.2.0_linux_amd64 /usr/bin
+mv kustomize_3.2.0_linux_amd64 /usr/bin/kustomize
 
 #---------------- install kubeflow as a single command
 cd manifests
-while ! kustomize_3.2.0_linux_amd64 build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
+while ! kustomize build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
