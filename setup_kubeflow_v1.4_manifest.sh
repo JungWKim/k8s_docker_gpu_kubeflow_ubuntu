@@ -8,8 +8,11 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: local-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer" >> default-storageclass.yaml
+provisioner: nfs-provisioner
+parameters:
+  server: 192.168.0.203
+  path: /data
+  readOnly: "false"" >> default-storageclass.yaml
 
 kubectl apply -f default-storageclass.yaml
 
