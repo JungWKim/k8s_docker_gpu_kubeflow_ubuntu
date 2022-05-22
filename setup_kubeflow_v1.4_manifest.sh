@@ -11,9 +11,6 @@ kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storagec
 #---------------- download kubeflow manifest repository
 git clone https://github.com/kubeflow/manifests.git
 
-#---------------- check out to branch kubeflow 1.4.1
-git checkout v1.4.1
-
 #---------------- download kustomize.exe file 3.2.0 for linux which is stable with over kubeflow version 1.5.0
 wget https://github.com/kubernetes-sigs/kustomize/releases/download/v3.2.0/kustomize_3.2.0_linux_amd64
 
@@ -21,6 +18,7 @@ wget https://github.com/kubernetes-sigs/kustomize/releases/download/v3.2.0/kusto
 chmod +x kustomize_3.2.0_linux_amd64
 mv kustomize_3.2.0_linux_amd64 /usr/bin/kustomize
 
-#---------------- install kubeflow as a single command
+#---------------- check out to branch kubeflow 1.4.1 && install kubeflow as a single command
 cd manifests
+git checkout v1.4.1
 while ! kustomize build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
