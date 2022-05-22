@@ -90,3 +90,6 @@ ufw allow 10252
 #systemctl enable ufw
 #systemctl start ufw
 #ufw enable
+
+#------------- install nfs-common for nfs storage class in future use
+apt install -y nfs-common

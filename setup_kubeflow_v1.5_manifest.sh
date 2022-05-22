@@ -2,18 +2,11 @@
 
 # Turn off ufw or open a specific port for kubeflow installation
 
-#---------------- create default storage class
-echo "\
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: local-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer" >> default-storageclass.yaml
+#---------------- install nfs-utils for binding pv to PVCs by storage class
+apt install -y nfs-common
 
-kubectl apply -f default-storageclass.yaml
-
-kubectl patch storageclass local-storage -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+#---------------- set nfs-client storage class as default
+kubectl patch storageclass nfs-client -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 
 #---------------- download kubeflow manifest repository
 git clone https://github.com/kubeflow/manifests.git

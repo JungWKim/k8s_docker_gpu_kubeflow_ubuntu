@@ -95,3 +95,6 @@ echo "source <(kubeadm completion bash)" >> /home/$user_name/.bashrc
 echo "source <(kubectl completion bash)" >> $HOME/.bashrc
 echo "source <(kubeadm completion bash)" >> $HOME/.bashrc
 source $HOME/.bashrc
+
+#------------- install nfs-common for nfs storage class in future use
+apt install -y nfs-common
