@@ -21,6 +21,7 @@ systemctl stop ufw
 systemctl disable ufw
 
 #------------- install docker
+sed -i 's/kr.archive.ubuntu.com/ftp.daumkakao.com/g' /etc/apt/sources.list
 apt-get remove docker docker-engine docker.io
 apt update
 #apt install -y apt-transport-https ca-certificates curl software-properties-common
