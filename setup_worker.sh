@@ -29,7 +29,7 @@ apt update
 #apt update
 #apt install -y docker-ce
 
-apt-get install \
+apt-get -y install \
     ca-certificates \
     curl \
     gnupg \
@@ -40,7 +40,7 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 #-------------- make docker use systemd not cgroupfs
 cat > /etc/docker/daemon.json <<EOF
