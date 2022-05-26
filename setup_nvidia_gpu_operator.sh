@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#------------- Before executing this script, all GPU worker nodes must be installed with NVIDIA driver and nvidia-docker 2.0 !!!
-#------------- install NVIDIA dependencies
-
 # install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
   && chmod 700 get_helm.sh \
