@@ -17,6 +17,10 @@ read -p -e "Do you wanna install nvidia container runtime? (yes/no) " answer
 read -p -e "Enter the system's IP : " ip
 read -p -e "Enter the user name you want to give administrator privilege : " user_name
 
+#------------- install basic packages
+sed -i 's/1/0/g' /etc/apt/apt.conf.d/20auto-upgrades
+apt install -y net-tools nfs-common
+
 #------------- disable ufw
 systemctl stop ufw
 systemctl disable ufw
