@@ -1,7 +1,7 @@
 #!/bin/bash
 
-read -p -e "Enter the nfs server's IP: " nfs_ip
-read -p -e "Enter the nfs path to install db files: (ex. /volume1/kubeflow ) " nfs_path
+read -e -p "Enter the nfs server's IP: " nfs_ip
+read -e -p "Enter the nfs path to install db files: (ex. /volume1/kubeflow ) " nfs_path
 
 #------------- add nfs provisioner repository
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
