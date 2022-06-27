@@ -105,5 +105,7 @@ ufw allow 10252
 #systemctl start ufw
 #ufw enable
 
-#------------- install nfs-common for nfs storage class in future use
-apt install -y nfs-common
+#------------- install helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+  && chmod 700 get_helm.sh \
+  && ./get_helm.sh
